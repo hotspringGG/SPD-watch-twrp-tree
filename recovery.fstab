@@ -1,3 +1,8 @@
+# Android fstab file.
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+# Currently we dont have e2fsck compiled. So fs check would failed.
+
 /spl                 emmc     /dev/block/mmcblk0boot0                                                   flags=display=spl
 /spl_bk              emmc     /dev/block/mmcblk0boot1                                                   flags=display=spl_bk
 /uboot               emmc     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/uboot            flags=display=uboot
@@ -27,7 +32,14 @@
 /logo                emmc     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/logo             flags=display=logo
 /fbootlogo           emmc     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/fbootlogo        flags=display=fbootlogo
 /system              ext4     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/system           flags=display=system
-/vendor              ext4     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/vendor           flags=display=vendor
-/data                f2fs     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/userdata         flags=display=data
-/cache               ext4     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/cache            flags=display=cache
-/productinfo         ext4     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/prodnv           flags=display=productinfo
+#/vendor              ext4     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/vendor           flags=display=vendor
+#/data                f2fs     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/userdata         flags=display=data
+#/cache               ext4     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/cache            flags=display=cache
+#/productinfo         ext4     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/prodnv           flags=display=productinfo
+
+/dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/vendor                /vendor             ext4    barrier=1    wait,display=vendor
+/dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/userdata              /data               f2fs    noatime,nosuid,nodev,discard,inline_xattr,inline_data    wait,encryptable=footer,check,display=data
+/dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/cache                 /cache              ext4    noatime,nosuid,nodev,nomblk_io_submit,noauto_da_alloc    wait,check,display=cache
+/dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/prodnv                /productinfo        ext4    noatime,nosuid,nodev,nomblk_io_submit,noauto_da_alloc     wait,check,display=productinfo
+/dev/block/platform/soc/soc:ap-ahb/20300000.sdio/mmcblk1p1                     /storage/sdcard0    vfat    defaults    defaults
+/devices/platform/soc/soc:ap-ahb/20200000.usb/musb-hdrc.0.auto/usb*            auto                vfat    defaults    voldmanaged=usbdisk:auto
