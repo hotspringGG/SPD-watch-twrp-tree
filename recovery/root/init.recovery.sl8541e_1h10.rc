@@ -73,6 +73,7 @@ on init
     setprop sys.usb.config mtp,adb
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     start adbd
+    setprop sys.usb.state ${sys.usb.config}
 
 on boot
     ifup lo
