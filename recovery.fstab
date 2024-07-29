@@ -36,10 +36,10 @@
 /data                f2fs     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/userdata         flags=display=data
 /cache               ext4     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/cache            flags=display=cache
 /productinfo         ext4     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/prodnv           flags=display=productinfo
-auto                 vfat     /devices/platform/soc/soc:ap-ahb/20200000.usb/musb-hdrc.0.auto/usb*       flags=voldmanaged=usbdisk:auto
+#auto                 vfat     /devices/platform/soc/soc:ap-ahb/20200000.usb/musb-hdrc.0.auto/usb*       flags=voldmanaged=usbdisk:auto
 
 #/dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/vendor                /vendor             ext4    barrier=1    wait,display=vendor
 #/dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/userdata              /data               f2fs    noatime,nosuid,nodev,discard,inline_xattr,inline_data    wait,encryptable=footer,check,display=data
 #/dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/cache                 /cache              ext4    noatime,nosuid,nodev,nomblk_io_submit,noauto_da_alloc    wait,check,display=cache
 #/dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/prodnv                /productinfo        ext4    noatime,nosuid,nodev,nomblk_io_submit,noauto_da_alloc     wait,check,display=productinfo
-#/devices/platform/soc/soc:ap-ahb/20200000.usb/musb-hdrc.0.auto/usb*            auto                vfat    defaults    voldmanaged=usbdisk:auto
+/devices/platform/soc/soc:ap-ahb/20200000.usb/musb-hdrc.0.auto/usb*            auto                vfat    defaults    voldmanaged=usbdisk:auto
