@@ -36,7 +36,7 @@
 /data                f2fs     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/userdata         flags=display=data
 /cache               ext4     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/cache            flags=display=cache
 /productinfo         ext4     /dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/prodnv           flags=display=productinfo
-#auto                 vfat     /devices/platform/soc/soc:ap-ahb/20200000.usb/musb-hdrc.0.auto/usb*       flags=
+auto                 vfat     /devices/platform/soc/soc:ap-ahb/20200000.usb/musb-hdrc.0.auto/usb*       flags=display=usb
 
 #/dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/vendor                /vendor             ext4    barrier=1    wait,display=vendor
 #/dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/userdata              /data               f2fs    noatime,nosuid,nodev,discard,inline_xattr,inline_data    wait,encryptable=footer,check,display=data
